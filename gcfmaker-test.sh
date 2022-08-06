@@ -23,15 +23,22 @@ err="/home/atsuya/tmp/$$-error"
 #テスト1 正常動作の確認（2つの入力が自然数）
 GCFMAKER 81 36  > ${ans}
 echo -e "81\n36" | ./gcfmaker.sh > ${result}
-diff ${ans} ${result} || exit 1
+diff ${ans} ${result} || echo テスト1でエラー発生 >> ${err}
 
 #テスト2 異常動作の確認（1つ目の入力が文字）
-echo "自然数を入力してください。" > ${ans}
-echo "AAA" | ./gcfmaker.sh 1> /dev/null 2> ${result}
-diff ${ans} ${result} || exit 1
+echo 自然数を入力してください。 > ${ans}
+echo AAA | ./gcfmaker.sh 1> /dev/null 2> ${result}
+diff ${ans} ${result} || echo テスト2でエラー発生 >> ${err}
 
-#一時保存ファイルの削除
-rm /home/atsuya/tmp/$$-*
-
-#終了メッセージ
-echo OK!
+#エラーの確認
+if [ -f ${err} ]; then
+  #エラーの出力
+  cat ${err}
+  #一時保存ファイルの削除
+  rm /home/atsuya/tmp/$$-*
+  exit 1
+else
+  #正常終了
+  rm /home/atsuya/tmp/$$-*
+  echo OK!
+fi
