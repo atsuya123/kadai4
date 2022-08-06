@@ -26,12 +26,12 @@ read -p "2つ目の自然数：" DATA2
 VALIDATION "$DATA2"
 
 #ユークリッドの互除法
-r=`expr $DATA1 % $DATA2`
+r=$(($DATA1 % $DATA2))
 while [ 0 -lt $r ]
 do
   DATA1=$DATA2
   DATA2=$r
-  r=`expr $DATA1 % $DATA2`
+  r=$(($DATA1 % $DATA2))
 done
 
 #結果の出力
