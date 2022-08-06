@@ -110,6 +110,11 @@ echo ERROR：先頭に0をつけないでください。 > ${ans}
 echo -e "81\n011" | ./gcfmaker.sh 1> /dev/null 2> ${result}
 diff ${ans} ${result} || echo テスト18でエラー発生 >> ${err}
 
+#テスト19 異常動作の確認（どちらの入力の先頭にも0がついている）
+echo ERROR：先頭に0をつけないでください。 > ${ans}
+echo -e "011\n011" | ./gcfmaker.sh 1> /dev/null 2> ${result}
+diff ${ans} ${result} || echo テスト19でエラー発生 >> ${err}
+
 #エラーの確認
 if [ -f ${err} ]; then
   echo --------------------------------------------------------
