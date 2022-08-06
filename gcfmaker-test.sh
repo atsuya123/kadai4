@@ -100,6 +100,11 @@ echo ERROR：10桁以内の自然数を入力してください。 > ${ans}
 echo -e "12345678901\n12345678901" | ./gcfmaker.sh 1> /dev/null 2> ${result}
 diff ${ans} ${result} || echo テスト16でエラー発生 >> ${err}
 
+#テスト17 異常動作の確認（1つ目の入力の先頭に0がついている）
+echo ERROR：先頭に0をつけないでください。 > ${ans}
+echo 011 | ./gcfmaker.sh 1> /dev/null 2> ${result}
+diff ${ans} ${result} || echo テスト17でエラー発生 >> ${err}
+
 #エラーの確認
 if [ -f ${err} ]; then
   echo --------------------------------------------------------
