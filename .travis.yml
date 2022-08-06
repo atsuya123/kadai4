@@ -1,0 +1,5 @@
+language: bash
+script:
+  - echo Travis CI test in .travis.yml
+  - echo Start the test of gcfmaker.sh
+  - ./gcfmaker-test.sh
