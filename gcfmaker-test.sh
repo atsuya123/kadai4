@@ -95,6 +95,11 @@ echo ERROR：10桁以内の自然数を入力してください。 > ${ans}
 echo -e "81\n12345678901" | ./gcfmaker.sh 1> /dev/null 2> ${result}
 diff ${ans} ${result} || echo テスト15でエラー発生 >> ${err}
 
+#テスト16 異常動作の確認（どちらの入力も10桁より多い）
+echo ERROR：10桁以内の自然数を入力してください。 > ${ans}
+echo -e "12345678901\n12345678901" | ./gcfmaker.sh 1> /dev/null 2> ${result}
+diff ${ans} ${result} || echo テスト16でエラー発生 >> ${err}
+
 #エラーの確認
 if [ -f ${err} ]; then
   echo --------------------------------------------------------
