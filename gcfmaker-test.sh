@@ -80,6 +80,11 @@ echo ERROR：自然数を入力してください。 > ${ans}
 echo -e "81\n%" | ./gcfmaker.sh 1> /dev/null 2> ${result}
 diff ${ans} ${result} || echo テスト12でエラー発生 >> ${err}
 
+#テスト13 異常動作の確認（どちらの入力も記号）
+echo ERROR：自然数を入力してください。 > ${ans}
+echo -e "%\n%" | ./gcfmaker.sh 1> /dev/null 2> ${result}
+diff ${ans} ${result} || echo テスト13でエラー発生 >> ${err}
+
 #エラーの確認
 if [ -f ${err} ]; then
   echo --------------------------------------------------------
