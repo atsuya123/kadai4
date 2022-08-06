@@ -2,7 +2,7 @@
 
 #最大公約数を求める関数
 GCFMAKER () {
-  echo 最大公約数を求めたい2つの自然数を入力してください.
+  echo 最大公約数を求めたい2つの自然数を入力してください。
   DATA1=$1
   DATA2=$2
   r=$(($DATA1 % $DATA2))
@@ -30,8 +30,14 @@ echo ERROR：自然数を入力してください。 > ${ans}
 echo AAA | ./gcfmaker.sh 1> /dev/null 2> ${result}
 diff ${ans} ${result} || echo テスト2でエラー発生 >> ${err}
 
+#テスト3 異常動作の確認（2つ目の入力が文字）
+echo ERROR：自然数を入力してください。 > ${ans}
+echo -e "81\nAAA" | ./gcfmaker.sh 1> /dev/null 2> ${result}
+diff ${ans} ${result} || echo テスト3でエラー発生 >> ${err}
+
 #エラーの確認
 if [ -f ${err} ]; then
+  echo --------------------------------------------------------
   #エラーの出力
   cat ${err}
   #一時保存ファイルの削除
