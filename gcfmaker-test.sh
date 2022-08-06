@@ -15,13 +15,23 @@ GCFMAKER () {
   echo 最大公約数:$DATA2
 }
 
+#パスを変数に設定
+ans="/home/atsuya/tmp/$$-ans"
+result="/home/atsuya/tmp/$$-result"
+err="/home/atsuya/tmp/$$-error"
 
-ans="/tmp/$$-ans"
-result="/tmp/$$-result"
-
-# テスト1 正常動作の確認
+#テスト1 正常動作の確認（2つの入力が自然数）
 GCFMAKER 81 36  > ${ans}
 echo -e "81\n36" | ./gcfmaker.sh > ${result}
 diff ${ans} ${result} || exit 1
 
+#テスト2 異常動作の確認（1つ目の入力が文字）
+echo "自然数を入力してください。" > ${ans}
+echo "AAA" | ./gcfmaker.sh 1> /dev/null 2> ${result}
+diff ${ans} ${result} || exit 1
+
+#一時保存ファイルの削除
+rm /home/atsuya/tmp/$$-*
+
+#終了メッセージ
 echo OK!
