@@ -26,7 +26,7 @@ echo -e "81\n36" | ./gcfmaker.sh > ${result}
 diff ${ans} ${result} || echo テスト1でエラー発生 >> ${err}
 
 #テスト2 異常動作の確認（1つ目の入力が文字）
-echo 自然数を入力してください。 > ${ans}
+echo ERROR：自然数を入力してください。 > ${ans}
 echo AAA | ./gcfmaker.sh 1> /dev/null 2> ${result}
 diff ${ans} ${result} || echo テスト2でエラー発生 >> ${err}
 
