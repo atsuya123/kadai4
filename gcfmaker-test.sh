@@ -12,7 +12,7 @@ GCFMAKER () {
     DATA2=$r
     r=$(($DATA1 % $DATA2))
   done
-  echo 最大公約数:$DATA2
+  echo 最大公約数：$DATA2
 }
 
 #パスを変数に設定

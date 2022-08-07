@@ -52,4 +52,4 @@ do
 done
 
 #結果の出力
-echo 最大公約数:$DATA2
+echo 最大公約数：$DATA2
