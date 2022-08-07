@@ -130,6 +130,11 @@ echo ERROR：自然数を入力してください。 > ${ans}
 echo -e "\n" | ./gcfmaker.sh 1> /dev/null 2> ${result}
 diff ${ans} ${result} || echo テスト22でエラー発生 >> ${err}
 
+#テスト23 異常動作の確認（1つ目の入力が半角スペース）
+echo ERROR：自然数を入力してください。 > ${ans}
+echo " " | ./gcfmaker.sh 1> /dev/null 2> ${result}
+diff ${ans} ${result} || echo テスト23でエラー発生 >> ${err}
+
 #エラーの確認
 if [ -f ${err} ]; then
   echo --------------------------------------------------------
