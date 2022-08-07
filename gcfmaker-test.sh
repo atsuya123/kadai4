@@ -115,6 +115,11 @@ echo ERROR：先頭に0をつけないでください。 > ${ans}
 echo -e "011\n011" | ./gcfmaker.sh 1> /dev/null 2> ${result}
 diff ${ans} ${result} || echo テスト19でエラー発生 >> ${err}
 
+#テスト20 異常動作の確認（1つ目の入力がない）
+echo ERROR：自然数を入力してください。 > ${ans}
+echo | ./gcfmaker.sh 1> /dev/null 2> ${result}
+diff ${ans} ${result} || echo テスト20でエラー発生 >> ${err}
+
 #エラーの確認
 if [ -f ${err} ]; then
   echo --------------------------------------------------------
