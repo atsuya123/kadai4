@@ -160,6 +160,12 @@ echo ERROR：自然数を入力してください。 > ${ans}
 echo -e "　\n　" | ./gcfmaker.sh 1> /dev/null 2> ${result}
 diff ${ans} ${result} || echo テスト28でエラー発生 >> ${err}
 
+#テスト29 異常動作の確認（直接引数が渡させる）
+echo WARNING：直接引数を入力せず、次の指示に従ってください。 > ${ans}
+GCFMAKER 81 36 >> ${ans}
+echo -e "81\n36" | ./gcfmaker.sh 81 36 > ${result}
+diff ${ans} ${result} || echo テスト29でエラー発生 >> ${err}
+
 #エラーの確認
 if [ -f ${err} ]; then
   echo --------------------------------------------------------
