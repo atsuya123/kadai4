@@ -16,9 +16,9 @@ GCFMAKER () {
 }
 
 #パスを変数に設定
-ans="/tmp/$$-ans"
-result="/tmp/$$-result"
-err="/tmp/$$-error"
+ans="/tmp/ans-$$"
+result="/tmp/result-$$"
+err="/tmp/error-$$"
 
 #テスト1 正常動作の確認（2つの入力が自然数）
 GCFMAKER 81 36  > ${ans}
@@ -168,14 +168,14 @@ diff ${ans} ${result} || echo テスト29でエラー発生 >> ${err}
 
 #エラーの確認
 if [ -f ${err} ]; then
-  echo --------------------------------------------------------
+  echo ====================エラー情報====================
   #エラーの出力
   cat ${err}
   #一時保存ファイルの削除
-  rm /tmp/$$-*
+  rm /tmp/*-$$
   exit 1
 else
   #正常終了
-  rm /tmp/$$-*
+  rm /tmp/*-$$
   echo OK!
 fi
