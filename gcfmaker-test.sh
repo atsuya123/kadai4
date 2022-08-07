@@ -125,6 +125,11 @@ echo ERROR：自然数を入力してください。 > ${ans}
 echo -e "81\n" | ./gcfmaker.sh 1> /dev/null 2> ${result}
 diff ${ans} ${result} || echo テスト21でエラー発生 >> ${err}
 
+#テスト22 異常動作の確認（どちらの入力もない）
+echo ERROR：自然数を入力してください。 > ${ans}
+echo -e "\n" | ./gcfmaker.sh 1> /dev/null 2> ${result}
+diff ${ans} ${result} || echo テスト22でエラー発生 >> ${err}
+
 #エラーの確認
 if [ -f ${err} ]; then
   echo --------------------------------------------------------
