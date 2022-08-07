@@ -16,9 +16,9 @@ GCFMAKER () {
 }
 
 #パスを変数に設定
-ans="/home/atsuya/tmp/$$-ans"
-result="/home/atsuya/tmp/$$-result"
-err="/home/atsuya/tmp/$$-error"
+ans="/tmp/$$-ans"
+result="/tmp/$$-result"
+err="/tmp/$$-error"
 
 #テスト1 正常動作の確認（2つの入力が自然数）
 GCFMAKER 81 36  > ${ans}
@@ -172,10 +172,10 @@ if [ -f ${err} ]; then
   #エラーの出力
   cat ${err}
   #一時保存ファイルの削除
-  rm /home/atsuya/tmp/$$-*
+  rm /tmp/$$-*
   exit 1
 else
   #正常終了
-  rm /home/atsuya/tmp/$$-*
+  rm /tmp/$$-*
   echo OK!
 fi
